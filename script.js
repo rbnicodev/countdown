@@ -16,6 +16,7 @@ function updateCountdown() {
     const minutesEl = document.getElementById('minutes');
     const secondsEl = document.getElementById('seconds');
 
+    const daysDiv = daysEl.parentElement;
     const hoursDiv = hoursEl.parentElement;
     const minutesDiv = minutesEl.parentElement;
     const secondsDiv = secondsEl.parentElement;
@@ -25,6 +26,7 @@ function updateCountdown() {
         daysEl.textContent = days + 1;
         [hoursEl, minutesEl, secondsEl].forEach(el => el.textContent = '--');
         [hoursDiv, minutesDiv, secondsDiv].forEach(div => div.style.display = 'none');
+        days.sylte.display = 'block';
     } else {
         // 24h o menos → mostrar cuenta regresiva completa
         daysEl.textContent = days;
@@ -32,8 +34,10 @@ function updateCountdown() {
         minutesEl.textContent = minutes.toString().padStart(2, '0');
         secondsEl.textContent = seconds.toString().padStart(2, '0');
         [hoursDiv, minutesDiv, secondsDiv].forEach(div => div.style.display = 'block');
+        days.sylte.display = 'none';
     }
 }
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
+
